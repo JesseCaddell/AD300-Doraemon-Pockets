@@ -11,13 +11,13 @@ class Doraemon implements Storage {
     public ArrayList<String> pocket = new ArrayList<>();
 
     @Override
-    public void addItem(String itemName) {
+    public void addItem(String itemName) { //can add some checks to ensure no special characters or numbers added (p1)
         pocket.add(itemName);
 
     }
 
     @Override
-    public void removeItem(String itemName) {
+    public void removeItem(String itemName) { //can add same check as (p1)
         if (pocket.contains(itemName)) {
             pocket.remove(itemName);
         }
@@ -30,8 +30,13 @@ class Doraemon implements Storage {
 
     @Override
     public void printItems() {
-        for (int index = 0; index < pocket.size(); ++index) {
-            System.out.println("You have a " + pocket.get(index) + " in the pocket!");
+        if (pocket.size() > 0) {
+            for (int index = 0; index < pocket.size(); ++index) {
+                System.out.println("You have a " + pocket.get(index) + " in the pocket!");
+            }
+        }
+        else {
+            System.out.println("Doraemon's pockets are empty!");
         }
 
     }
@@ -46,7 +51,8 @@ class Doraemon implements Storage {
 public class Main {
     public static void main(String[] args) {
         Doraemon doraemon = new Doraemon();
-        doraemon.addItem("Raygun");
+        //doraemon.addItem("Raygun");
+        //doraemon.removeItem("Raygun");
         doraemon.printItems();
     }
 }
